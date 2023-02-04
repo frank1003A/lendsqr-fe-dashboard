@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "AvenirNextBold";   /*Can be any text*/
+  src: local("AvenirNextLTPro-Bold"),
+    url("./fonts/AvenirNextLTPro-Bold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "AvenirNextLight";   /*Can be any text*/
+  src: local("AvenirNextLTPro-It"),
+    url("./fonts/AvenirNextLTPro-It.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "AvenirNextRegular";   /*Can be any text*/
+  src: local("AvenirNextLTPro-It"),
+    url("./fonts/AvenirNextLTPro-Regular.otf") format("truetype");
+}
+
+
+html {
+   /* 1rem = 10px */
+   font-size: 62.5%;
+   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  font-family: 'AvenirNextRegular';
+  --mainbg: #FFFFFF;
+  --primarycolor: #213F7D;
+  --secondarycolor: #39CDCC;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
