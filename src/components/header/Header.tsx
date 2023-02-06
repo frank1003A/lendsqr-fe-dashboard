@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { logo } from "utils/images";
 import notifyicon from "assets/figma/notification.svg";
-import avatar from "assets/png/avatar.png";
 import SearchInput from "./SearchInput";
-import { FaCaretDown } from "react-icons/fa";
+import UserSelect from "./UserSelect";
 
 const Header = () => {
   return (
@@ -20,13 +19,7 @@ const Header = () => {
 
           <img src={notifyicon} alt="notification_icon" />
 
-          <div className="account-handle">
-            <span className="avatar">
-              <img src={avatar} alt="profile_photo_badge" />
-            </span>
-            <p>Adedeji</p>
-            <FaCaretDown />
-          </div>
+        <UserSelect/>
         </div>
       </nav>
     </div>

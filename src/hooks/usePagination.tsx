@@ -50,21 +50,23 @@ export const usePagination = ({
 
     const firstPageIndex = 1;
     const lastPageIndex = totalPageCount;
+    const secondToLastPage = lastPageIndex - 1
+    const secondToFirstPage = firstPageIndex + 1
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
-      let leftItemCount = 3 + 2 * siblingCount;
+      let leftItemCount = 3 * siblingCount;
       let leftRange = range(1, leftItemCount);
 
-      return [...leftRange, DOTS, totalPageCount];
+      return [...leftRange, DOTS, secondToLastPage, totalPageCount];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
-      let rightItemCount = 3 + 2 * siblingCount;
+      let rightItemCount = 3 * siblingCount;
       let rightRange = range(
         totalPageCount - rightItemCount + 1,
         totalPageCount
       );
-      return [firstPageIndex, DOTS, ...rightRange];
+      return [firstPageIndex, secondToFirstPage, DOTS, ...rightRange];
     }
 
     if (shouldShowLeftDots && shouldShowRightDots) {

@@ -3,14 +3,20 @@ import users from "assets/figma/users.svg";
 import active from "assets/figma/active.svg";
 import loans from "assets/figma/loans.svg";
 import savings from "assets/figma/savings.svg";
-import DataTableComponent from "components/DataTable";
+import DataTableComponent from "components/table/DataTable";
 import { useState, useEffect } from "react";
 import Loader from "components/Loader";
 
 const Users = () => {
-  const [data, setData] = useState<any>(null);
+  let offlineData = JSON.parse(localStorage.getItem('users') as string);
+  const [data, setData] = useState<any>(offlineData);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const SaveUsersToStorage = (arr: []) => {
+    // Save to Local Storage
+    localStorage.setItem("users", JSON.stringify(arr));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +26,7 @@ const Users = () => {
         );
         const json = await response.json();
         setData(json);
+        SaveUsersToStorage(json)
         setLoading(false);
       } catch (error: any) {
         setError(error.message);
@@ -33,7 +40,7 @@ const Users = () => {
     return <Loader/>;
   }
   if (error) {
-    return <div>Error: {error}</div>;
+    <div>Error: {error}</div>;
   }
 
   return (

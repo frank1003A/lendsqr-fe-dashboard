@@ -35,11 +35,11 @@ export interface PROFILE {
 }
 
 export interface USER {
-  createdAt: string;
+  createdAt: Date;
   orgName?: string;
   userName?: string;
   email?: string;
-  lastActiveDate?: string;
+  lastActiveDate?: Date;
   profile?: Profile;
   guarantor?: GUARANTOR;
   accountBalance?: string;

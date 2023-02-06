@@ -4,6 +4,7 @@ import UserCard from "components/user/UserCard";
 import { useEffect, useState } from "react";
 import GeneralDetails from "components/user/tabs/GeneralDetails";
 import { USER } from "components/types/user";
+import Loader from "components/Loader";
 
 const UserDetailes = () => {
   let { id } = useParams();
@@ -35,7 +36,7 @@ const UserDetailes = () => {
   }, [id])
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
   if (error) {
     return <div>Error: {error}</div>;

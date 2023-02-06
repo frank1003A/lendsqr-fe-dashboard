@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { icon, logo, pablo_signin } from "utils/images";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <main className="login">
       <section className="container_1">
@@ -25,7 +26,11 @@ const Login = () => {
             id="password"
           />
           <Link to="/forgotpassword">forgot password</Link>
-          <input type="button" value="LOG IN" />
+          <input
+            type="button"
+            value="LOG IN"
+            onClick={() => navigate("/users")}
+          />
         </form>
       </section>
     </main>

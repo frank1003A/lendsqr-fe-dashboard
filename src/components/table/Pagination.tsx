@@ -1,5 +1,5 @@
 import { DOTS, usePagination } from "hooks/usePagination";
-import classnames from 'classnames'
+import classnames from "classnames";
 
 interface PaginationProps {
   onPageChange: (value: number) => void;
@@ -53,24 +53,26 @@ const Pagination = ({
       >
         <div className="arrow left" />
       </li>
-      {paginationRange && paginationRange.map((pageNumber) => {
-        // If the pageItem is a DOT, render the DOTS unicode character
-        if (pageNumber === DOTS) {
-          return <li className="pagination-item dots">&#8230;</li>;
-        }
+      {paginationRange &&
+        paginationRange.map((pageNumber, index) => {
+          // If the pageItem is a DOT, render the DOTS unicode character
+          if (pageNumber === DOTS) {
+            return <li className="pagination-item dots">&#8230;</li>;
+          }
 
-        // Render our Page Pills
-        return (
-          <li
-            className={classnames("pagination-item", {
-              selected: pageNumber === currentPage,
-            })}
-            onClick={() => onPageChange(Number(pageNumber))}
-          >
-            {pageNumber}
-          </li>
-        );
-      })}
+          // Render our Page Pills
+          return (
+            <li
+              key={index}
+              className={classnames("pagination-item", {
+                selected: pageNumber === currentPage,
+              })}
+              onClick={() => onPageChange(Number(pageNumber))}
+            >
+              {pageNumber}
+            </li>
+          );
+        })}
       {/*  Right Navigation arrow */}
       <li
         className={classnames("pagination-item", {

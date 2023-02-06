@@ -1,3 +1,4 @@
+import { formatNumberWithCommas } from "utils";
 
 interface Props {
     /**image or icon to render on card: 40px */
@@ -23,7 +24,7 @@ const Card = (props: Props) => {
           <img src={props.icon} alt={`${slice(props.icon as string)}_icon`} />
         </span>
         <span className='name'>{props.name}</span>
-        <span className='fig'>{props.fig}</span>
+        <span className='fig'>{formatNumberWithCommas(props.fig)}</span>
     </div>
   )
 }
