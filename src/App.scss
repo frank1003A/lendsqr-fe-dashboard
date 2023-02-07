@@ -151,6 +151,11 @@
 
 @media only screen and (max-width: 425px) {
 
+  .pagination-container {
+    overflow-x: scroll;
+    width: 100%;
+  }
+
   /*Small smartphones [325px -> 425px]*/
   .login {
     .container_1 {
@@ -195,6 +200,7 @@
   min-height: 100vh;
   font-family: 'Work Sans', sans-serif;
 
+
   .header {
     background: #FFFFFF;
     box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
@@ -211,15 +217,19 @@
     line-height: 19px;
     text-transform: capitalize;
     color: va(--primarycolor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 2.8rem;
 
+    .bars {
+      display: none;
+      font-size: 30px;
+      color: var(--primarycolor);
+    }
 
-    .logo {
-      img {
-        max-height: 34px;
-      }
-
-      float: left;
-      display: block;
+    #logo {
+      max-height: 34px;
     }
 
     .search {
@@ -251,14 +261,6 @@
         padding: 1rem;
         cursor: pointer;
       }
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      padding: 0px 1.8rem;
     }
 
     .right {
@@ -318,12 +320,23 @@
     position: fixed;
     left: 0;
     right: 0;
+    bottom: 0;
     width: 240px;
     top: 70px;
-    height: 100%;
     overflow: auto;
+    transition: transform 0.5s ease 0s;
 
-    nav {
+    span.logo-sx {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1.9rem 3rem;
+      border-bottom: 1px solid #eee;
+      background: #eee;
+    }
+
+    .sdnav {
       width: 100%;
 
       .active {
@@ -429,19 +442,19 @@
         }
       }
 
-      .card:nth-child(1) {
+      #c1 {
         grid-area: c1;
       }
 
-      .card:nth-child(2) {
+      #c2 {
         grid-area: c2;
       }
 
-      .card:nth-child(3) {
+      #c3 {
         grid-area: c3;
       }
 
-      .card:nth-child(4) {
+      #c4 {
         grid-area: c4;
       }
 
@@ -479,6 +492,7 @@
 
       .table {
         grid-area: table;
+        overflow: hidden;
 
         table {
           background: #FFFFFF;
@@ -668,6 +682,7 @@
           background: none;
           margin: 0px 1rem;
           cursor: pointer;
+          font-size: 14px;
         }
 
         button#deactivate {
@@ -676,7 +691,6 @@
           font-family: 'Work Sans';
           font-style: normal;
           font-weight: 600;
-          font-size: 14px;
           line-height: 16px;
           text-align: center;
           letter-spacing: 0.1em;
@@ -690,7 +704,6 @@
           font-family: 'Work Sans';
           font-style: normal;
           font-weight: 600;
-          font-size: 14px;
           line-height: 16px;
           text-align: center;
           letter-spacing: 0.1em;
@@ -771,7 +784,6 @@
               font-style: normal;
               font-weight: 500;
               font-size: 14px;
-              line-height: 0;
               color: #545F7D;
             }
 
@@ -913,47 +925,263 @@
   }
 }
 
-@media only screen and (max-width: 1400px) {
+/*DataTable*/
+// This media query handles all element within
+// the table
+@media only screen and (max-width: 970px) {
   main {
+
+    // overiding the default view of the table for mobile
     .users .table {
       overflow: hidden;
 
       table {
-        min-width: 100%;
+        border: 0;
       }
+
+      table caption {
+        font-size: 1.3em;
+      }
+
+      table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+      table tr {
+        display: block;
+        margin-bottom: .625em;
+      }
+
+      table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        text-align: right;
+      }
+
+      table td::before {
+        /*
+          * aria-label has no advantage, it won't be read inside a table
+          content: attr(aria-label);
+          */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      table td:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    //Reset td last child rule defined in above
+    .layout main .users .table table tr:last-child td {
+      border-bottom: initial;
+    }
+
+    // change where the action-btn popup anchors
+    // on smaller devices
+    .table-action-menu {
+      right: initial;
+    }
+
+    // action buttons on mobile is different from
+    // that on large screen
+    .action-btn {
+      display: none;
+    }
+
+    .action-btn-sx {
+      display: block;
+    }
+
+    .filter-btn-sx {
+      display: block;
+      grid-area: ft;
     }
   }
 }
 
+/*Small screens, laptops*/
 @media only screen and (max-width: 970px) {
-  .layout .header .search {
-    display: none;
-  }
-}
 
-@media only screen and (max-width: 700px) {
+  // hide the sidebar for toggling later
   .layout .sidebar {
+    transform: translatex(-100%);
+    padding: 0rem 0px;
+  }
+
+  .layout .header {
+    .bars {
+      display: inline-block;
+    }
+  }
+
+  .layout .header .search {
     display: none;
   }
 
   .layout {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "header header"
+      "main main";
+
+    main {
+      .users {
+        grid-template-areas:
+          "name name name name"
+          "c1 c2 c3 c4"
+          "ft ft ft ft"
+          "table table table table";
+      }
+    }
+  }
+}
+
+/*  iPads, Tablets.*/
+@media only screen and (max-width: 768px) {
+
+  .layout {
+    .header {
+      padding: 0px 1.8rem;
+
+      #logo {
+        max-height: 32px;
+      }
+    }
   }
 
   main {
     .users {
       grid-template-columns: 1fr !important;
-      //grid-template-rows: repeat(12, 1fr) !important;
-      //grid-template-areas: initial !important;
+    }
+  }
+}
 
-      .card {
-        grid-area: initial;
+/*Mobile devices*/
+@media only screen and (max-width: 480px) {
+
+  // Grid system for mobile devices
+  .layout {
+    grid-template-areas: "header"
+      "main";
+
+    .header {
+      .action .account-handle {
+        width: 100%;
       }
 
-      table {
-        overflow: hidden;
-        max-height: 200px;
+      .right {
+        min-width: 0px;
+
+        #doc,
+        #noticon,
+        .action .account-handle .avatar {
+          display: none;
+        }
+
+        .action .account-handle .toggler {
+          background: #eee;
+          border-radius: 4px;
+          padding: .5rem;
+        }
+
+        .action .account-handle {
+          min-width: 0px;
+        }
       }
+    }
+
+    main {
+      .users {
+        grid-template-areas: "name"
+          "c1"
+          "c2"
+          "c3"
+          "c4"
+          "ft"
+          "table";
+        grid-template-rows: 30px repeat(4, 200px) 30px 1fr;
+        padding: 3rem;
+
+        .table .data-table-footer {
+          flex-direction: column;
+          width: 100%;
+        }
+      }
+
+      .user-details {
+        grid-template-areas: "back"
+          "name"
+          "card1"
+          "card2";
+        grid-template-rows: 25px 100px 400px 1fr;
+        grid-template-columns: 1fr;
+        padding: 1rem;
+
+        .name {
+          grid-area: name;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: column;
+
+          span {
+            display: flex;
+          }
+
+          button {
+            font-size: 12px;
+          }
+        }
+
+        .card1 {
+          display: flex;
+          flex-direction: column;
+
+          .general-info {
+            flex-direction: column;
+            text-align: center;
+
+            .username-img-id .name-id h1 {
+              font-size: 20px;
+            }
+          }
+
+          hr {
+            width: 100%;
+          }
+
+          .dropdown {
+            display: inline-block;
+          }
+
+          .section-toggle {
+            grid-area: none;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*Mobile devices*/
+@media only screen and (max-width: 320px) {
+
+  // the logo has a break point here ,
+  // so it is removed
+  .header {
+    #logo {
+      display: none;
     }
   }
 }
@@ -962,7 +1190,7 @@
 
 /** Global Designs*/
 
-.custom-select {
+.custom-select-sd {
   position: relative;
   font-family: "Work Sans";
   font-style: normal;
@@ -1098,7 +1326,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 100vh;
 
   p {
     font-family: "Work Sans";
@@ -1186,7 +1414,10 @@
   }
 }
 
-/**User Menu Popup*/
+/**loader end*/
+
+
+/**header user options pop up*/
 .action {
   .menu {
     position: absolute;
@@ -1291,6 +1522,8 @@
 /**User Menu Popup End*/
 
 
+
+/*desktop table action button*/
 .action-btn {
   cursor: pointer;
   border: none;
@@ -1299,8 +1532,20 @@
   padding: 0;
   align-items: center;
   margin: 0;
+  outline: none;
 }
 
+/*mobile table action button*/
+.action-btn-sx {
+  background: var(--secondarycolor);
+  display: none;
+  color: var(--mainbg);
+  border: none;
+  border-radius: 4px;
+  padding: .5rem 3rem;
+}
+
+/*popup for action-btn and action-btn-sx*/
 .table-action-menu {
   // box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   position: absolute;
@@ -1340,11 +1585,25 @@
   }
 }
 
+/*filter button for large screen table*/
 .filter-btn {
   border: none;
   background: none;
 }
 
+/*mobile table action button*/
+.filter-btn-sx {
+  display: none;
+  grid-area: ft;
+  background: var(--primarycolor);
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+}
+
+/*filter button pop up*/
 .filter-acton {
   position: absolute;
   background-color: white;
@@ -1419,5 +1678,100 @@
       }
     }
 
+  }
+}
+
+.form {
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin-top: 70px;
+
+    label {
+      font-family: "Work Sans";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 40px;
+      color: #545F7D;
+      text-transform: capitalize;
+    }
+
+    input {
+      background: #FFFFFF;
+      opacity: 0.2;
+      border: 1px solid #213F7D;
+      border-radius: 8px;
+      font-family: 'Work Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #545F7D;
+      opacity: 0.7;
+      padding: 1rem;
+      outline: none;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+      justify-content: space-between;
+
+      button {
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        padding: 1rem 2rem;
+        cursor: pointer;
+      }
+
+      button:first-child {
+        border: 1px solid #545F7D;
+        border-radius: 8px;
+        color: #545F7D;
+      }
+
+      button:last-child {
+        background: #39CDCC;
+        border: 1px solid #39CDCC;
+        border-radius: 8px;
+        color: #FFFFFF;
+      }
+    }
+
+  }
+}
+
+/** Custom Select for MobileView **/
+.dropdown {
+  position: relative;
+  padding: 1rem;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: var(--secondarycolor);
+  border: none;
+  outline: none;
+  border-bottom: 1px solid;
+  display: none;
+
+  option {
+    background: #FFFFFF;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+
+    &:selected {
+      background-color: red;
+    }
   }
 }

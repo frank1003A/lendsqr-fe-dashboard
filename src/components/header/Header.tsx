@@ -3,25 +3,25 @@ import { logo } from "utils/images";
 import notifyicon from "assets/figma/notification.svg";
 import SearchInput from "./SearchInput";
 import UserSelect from "./UserSelect";
+import Navbar from "./Navbar";
 
 const Header = () => {
   return (
     <div className="header">
-      <nav>
-        <span className="logo">
-          <img src={logo} alt="logo" />
-        </span>
+      <Navbar />
+        <img src={logo} alt="logo" id="logo" />
 
         <SearchInput />
 
         <div className="right">
-          <Link to="/docs">docs</Link>
+          <Link to="/docs" id="doc">
+            docs
+          </Link>
 
-          <img src={notifyicon} alt="notification_icon" />
+          <img src={notifyicon} alt="notification_icon" id="noticon" />
 
-        <UserSelect/>
+          <UserSelect />
         </div>
-      </nav>
     </div>
   );
 };

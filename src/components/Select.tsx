@@ -10,7 +10,7 @@ const CustomSelect = ({ options }: Props) => {
   const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <div className="custom-select">
+    <div className="custom-select-sd">
       <div className="selected-option" onClick={() => setOpen(!open)}>
         <img src={img} alt="briefcase_icon"/>
         {selectedOption}

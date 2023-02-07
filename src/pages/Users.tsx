@@ -6,6 +6,7 @@ import savings from "assets/figma/savings.svg";
 import DataTableComponent from "components/table/DataTable";
 import { useState, useEffect } from "react";
 import Loader from "components/Loader";
+import FilterDrawer from "components/table/FilterDrawer";
 
 const Users = () => {
   let offlineData = JSON.parse(localStorage.getItem('users') as string);
@@ -51,10 +52,13 @@ const Users = () => {
         </div>
 
         {/**Cards */}
-        <Card name="Users" icon={users} fig={2453} />
-        <Card name="Active Users " icon={active} fig={2453} />
-        <Card name="Users With Loans" icon={loans} fig={12453} />
-        <Card name="Users With Saving" icon={savings} fig={102453} />
+        <Card name="Users" icon={users} id={"c1"} fig={2453} />
+        <Card name="Active Users " icon={active} id={"c2"} fig={2453} />
+        <Card name="Users With Loans" icon={loans} id={"c3"} fig={12453} />
+        <Card name="Users With Saving" icon={savings} id={"c4"} fig={102453} />
+
+        {/**Only visible on mobile */}
+        <FilterDrawer/>
 
         {/**Data Table */}
         <div className="table">

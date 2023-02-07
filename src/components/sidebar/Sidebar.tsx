@@ -7,10 +7,10 @@ import { SidebarData } from "./SidebarData";
 const Sidebar = () => {
   return (
     <section className="sidebar">
-        <Select
+      <Select
         options={["switch orgnization", "organisation 1", "organition 2"]}
-        />
-      <nav>
+      />
+      <nav className="sdnav">
         <NavLink
           className={({ isActive }) => (isActive ? "active" : "")}
           to="/"
@@ -19,10 +19,9 @@ const Sidebar = () => {
           dashboard
         </NavLink>
 
-        {SidebarData.map((sb,index) => {
-          return <Menu menu={sb} key={index}/>
+        {SidebarData.map((sb, index) => {
+          return <Menu menu={sb} key={index} />;
         })}
-
       </nav>
     </section>
   );

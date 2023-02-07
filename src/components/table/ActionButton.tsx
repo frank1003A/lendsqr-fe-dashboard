@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import view from "assets/figma/eye.svg"
 import blc_usr from "assets/figma/blacklistuser.svg"
 import act_usr from "assets/figma/activateuser.svg"
+import { FaEdit } from "react-icons/fa";
 
 interface Props {
   id: string;
@@ -14,6 +15,9 @@ const ActionButton = ({ id }: Props) => {
     <>
       <button className="action-btn" onClick={() => setOpen(!open)} >
       <img src={actbtn} alt="action_button"/>
+      </button>
+      <button className="action-btn-sx" onClick={() => setOpen(!open)}>
+        <FaEdit/>
       </button>
       {open && (
         <div className="table-action-menu">

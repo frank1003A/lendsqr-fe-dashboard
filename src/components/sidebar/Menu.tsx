@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Submenu from "./Submenu";
 import { SideBarData } from "../types/sidebar";
 import ad from "assets/figma/arrowdown.svg";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   menu: SideBarData;
@@ -9,6 +10,19 @@ interface Props {
 
 const Menu = ({ menu }: Props) => {
   const [show, setShow] = useState<boolean>(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    let nav = menu.subNav;
+    const slideDownOnActive = () => {
+      for (let i = 0; i < nav.length; i++) {
+        if (location.pathname === nav[i].path) {
+          setShow(true);
+        }
+      }
+    };
+    slideDownOnActive();
+  }, [location.pathname, menu.subNav]);
   return (
     <div>
       <p className="menu" onClick={() => setShow(!show)}>

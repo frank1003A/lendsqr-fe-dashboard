@@ -7,6 +7,8 @@ interface Props {
     name: string;
     /**numbers */
     fig: number;
+    /**id of component */
+    id: string;
 }
 
 const Card = (props: Props) => {
@@ -19,7 +21,7 @@ const Card = (props: Props) => {
     return ret
   }
   return (
-    <div className="card">
+    <div className="card" id={props.id}>
         <span className='icon'>
           <img src={props.icon} alt={`${slice(props.icon as string)}_icon`} />
         </span>

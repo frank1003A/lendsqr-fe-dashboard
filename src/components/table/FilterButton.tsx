@@ -4,15 +4,16 @@ import FilterForm from "./FilterForm";
 interface Props {
   open: boolean;
   handleOpen: () => void;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 const FilterButton = ({ open, handleOpen, disabled }: Props) => {
   return (
     <>
-    <button className="filter-btn" disabled={disabled} onClick={handleOpen}>
-    <img src={filterIcon} alt="filter" />
-    </button>
+      <button className="filter-btn" disabled={disabled} onClick={handleOpen}>
+        <img src={filterIcon} alt="filter" />
+      </button>
+
       {open && (
         <div className="filter-acton">
           <FilterForm />

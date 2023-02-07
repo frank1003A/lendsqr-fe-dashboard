@@ -1,5 +1,6 @@
 import imgdefault from "assets/user/avatar.svg";
 import { USER } from "components/types/user";
+import Dropdown from "./Dropdown";
 import Tier from "./Tier";
 
 interface Props {
@@ -40,6 +41,7 @@ const UserCard = (props: Props) => {
           <h1 className="current-loan">₦{props.user.accountBalance}</h1>
           <h2 className="bank-details">{props.user.profile?.bvn}/Providus Bank</h2>
         </div>
+        <Dropdown handleSelect={(e) => props.onButtonClick(Number(e.target.value))}/>
       </div>
 
       <div className="section-toggle">
