@@ -7,19 +7,11 @@ import DataTableComponent from "components/table/DataTable";
 import { useState, useEffect } from "react";
 import Loader from "components/Loader";
 import FilterDrawer from "components/table/FilterDrawer";
-import useLocalStorage from "hooks/useLocalStrorage";
-import { USER } from "components/types/user";
 
 const Users = () => {
-  // localstorage hook to store all user detail
-  const [user, setUsers] = useLocalStorage<USER[]>("all_users", []);
-  const [data, setData] = useState<any>(user);
+  const [data, setData] = useState<any>();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
-  const SaveUsersToStorage = (users: USER[]) => {
-    setUsers(users);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +21,6 @@ const Users = () => {
         );
         const json = await response.json();
         setData(json);
-        SaveUsersToStorage(json);
         setLoading(false);
       } catch (error: any) {
         setError(error.message);
