@@ -12,22 +12,23 @@ const Navbar = () => {
   const [openNavbar, setOpen] = useState<boolean>(false);
 
   const toggleDrawer = () => {
-    setOpen((prevState) => !prevState);
+    setOpen(!openNavbar);
   };
 
   return (
-    <div className="bars">
+    <div className="bars" data-testid="navbar" data-open={`${openNavbar}`}>
       <span>
-        <Hamburger toggled={openNavbar} toggle={setOpen} />
+        <Hamburger toggled={openNavbar} toggle={setOpen} data-testid="hamburger" />
       </span>
       <Drawer
         open={openNavbar}
         onClose={toggleDrawer}
         direction="left"
         className="sidebar"
+        data-testid="drawer"
       >
         <span className="logo-sx">
-          <img src={logo} alt="logo" id="logo" />
+          <img src={logo} alt="logo_navlinks" id="logo" />
         </span>
         <nav className="sdnav">
           <NavLink

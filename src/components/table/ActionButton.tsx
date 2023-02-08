@@ -1,6 +1,5 @@
 import actbtn from "assets/figma/actbtn.svg";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { MouseEventHandler, useState } from "react";
 import view from "assets/figma/eye.svg"
 import blc_usr from "assets/figma/blacklistuser.svg"
 import act_usr from "assets/figma/activateuser.svg"
@@ -8,8 +7,9 @@ import { FaEdit } from "react-icons/fa";
 
 interface Props {
   id: string;
+  saveSelectedUserIdStorage: MouseEventHandler<HTMLSpanElement>
 }
-const ActionButton = ({ id }: Props) => {
+const ActionButton = ({ id,saveSelectedUserIdStorage }: Props) => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -21,30 +21,18 @@ const ActionButton = ({ id }: Props) => {
       </button>
       {open && (
         <div className="table-action-menu">
-          <Link
-            to={{
-              pathname: `/users/${id}`,
-            }}
-          >
+          <span onClick={saveSelectedUserIdStorage}>
             <img src={view} alt="eye_icon" />
             View Details
-          </Link>
-          <Link
-            to={{
-              pathname: `/blacklist`,
-            }}
-          >
+          </span>
+          <span>
             <img src={blc_usr} alt="user_cancel_icon" />
             Blacklist User
-          </Link>
-          <Link
-            to={{
-              pathname: `/activate`,
-            }}
-          >
+          </span>
+          <span>
             <img src={act_usr} alt="user_check_user" />
             Activate User
-          </Link>
+          </span>
         </div>
       )}
     </>

@@ -9,18 +9,18 @@ const Header = () => {
   return (
     <div className="header">
       <Navbar />
-        <img src={logo} alt="logo" id="logo" />
+        <img src={logo} alt="logo_header" id="logo" />
 
         <SearchInput />
 
         <div className="right">
-          <Link to="/docs" id="doc">
+          <Link to="/docs" id="doc" data-testid="docs-link">
             docs
           </Link>
 
           <img src={notifyicon} alt="notification_icon" id="noticon" />
 
-          <UserSelect />
+          <UserSelect  />
         </div>
     </div>
   );

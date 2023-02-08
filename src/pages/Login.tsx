@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { icon, logo, pablo_signin } from "utils/images";
+import { logo, pablo_signin } from "utils/images";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Login = () => {
       </section>
       <section className="container_2">
         <span className="logo_sx">
-          <img src={icon} alt="Lendsqr_logo" />
+          <img src={logo} alt="Lendsqr_logo" />
         </span>
         <form>
           <h1>Welcome!</h1>

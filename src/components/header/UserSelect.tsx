@@ -10,44 +10,53 @@ import {
 import { AiFillSetting } from "react-icons/ai";
 import avatar from "assets/png/avatar.png";
 import { Link } from "react-router-dom";
+import useOnClickOutside from "hooks/useOnClickOutside";
 
 const UserSelect = () => {
   const [open, setOpen] = useState(false);
+  // style toggle
+  const [style, setStyle] = useState({
+    top: "",
+    visibility: "",
+    opacity: 0,
+  });
+
+  // pop up menu
   const popupRef = useRef<HTMLDivElement>(null);
+  const handleClickOutside = (event: any) => {
+    setOpen(false);
+  };
 
+  // handling style toggle
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        popupRef.current &&
-        !popupRef.current.contains(event.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [popupRef]);
-
-  useEffect(() => {
-    if (open === true) {
-      const toggleMenu = document.querySelector(".menu")!;
-      toggleMenu.classList.toggle("active");
+    if (open) {
+      setStyle({ top: "92px", visibility: "visible", opacity: 1 });
+    } else {
+      setStyle({top: "", visibility: "hidden", opacity: 0})
     }
   }, [open]);
+
+
+  // hook to handle when user clicks outside the popup menu
+  // this means that for users to close the popup they must
+  // click outside the menu
+  useOnClickOutside(popupRef, handleClickOutside);
+
   return (
-    <div className="action">
+    <div className="action" data-testid="user-select">
       <div className="account-handle">
         <span className="avatar">
           <img src={avatar} alt="profile_photo_badge" />
         </span>
-        <span className="toggler" onClick={() => setOpen(!open)}>
+        <span className="toggler" ref={popupRef} onClick={() => setOpen(!open)}>
           <p>Adedeji</p>
           <FaCaretDown />
         </span>
       </div>
-      <div className="menu" ref={popupRef}>
+      <div
+        className="user-menu"
+        style={style as React.CSSProperties}
+      >
         <h3>
           Adedeji John Doe
           <br />

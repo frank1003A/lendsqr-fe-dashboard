@@ -43,6 +43,7 @@ const Pagination = ({
   return (
     <ul
       className={classnames("pagination-container", { [className]: className })}
+      data-testid="pagination-container"
     >
       {/* Left navigation arrow */}
       <li
@@ -50,6 +51,7 @@ const Pagination = ({
           disabled: currentPage === 1,
         })}
         onClick={onPrevious}
+        data-testid="pagination-item-left-arrow"
       >
         <div className="arrow left" />
       </li>
@@ -57,7 +59,7 @@ const Pagination = ({
         paginationRange.map((pageNumber, index) => {
           // If the pageItem is a DOT, render the DOTS unicode character
           if (pageNumber === DOTS) {
-            return <li className="pagination-item dots">&#8230;</li>;
+            return <li className="pagination-item dots" key={index}>&#8230;</li>;
           }
 
           // Render our Page Pills
@@ -79,6 +81,7 @@ const Pagination = ({
           disabled: currentPage === lastPage,
         })}
         onClick={onNext}
+        data-testid="pagination-item-right-arrow"
       >
         <div className="arrow right" />
       </li>

@@ -1,5 +1,5 @@
 import Card from "components/user/Card";
-import users from "assets/figma/users.svg";
+import users_icon from "assets/figma/users.svg";
 import active from "assets/figma/active.svg";
 import loans from "assets/figma/loans.svg";
 import savings from "assets/figma/savings.svg";
@@ -7,16 +7,19 @@ import DataTableComponent from "components/table/DataTable";
 import { useState, useEffect } from "react";
 import Loader from "components/Loader";
 import FilterDrawer from "components/table/FilterDrawer";
+import useLocalStorage from "hooks/useLocalStrorage";
+import { USER } from "components/types/user";
 
 const Users = () => {
-  let offlineData = JSON.parse(localStorage.getItem('users') as string);
+  let offlineData = JSON.parse(localStorage.getItem("all_users") as string);
   const [data, setData] = useState<any>(offlineData);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  // localstorage hook to store all user detail
+  const [user, setUsers] = useLocalStorage<USER[]>("all_users", []);
 
-  const SaveUsersToStorage = (arr: []) => {
-    // Save to Local Storage
-    localStorage.setItem("users", JSON.stringify(arr));
+  const SaveUsersToStorage = (users: USER[]) => {
+    if (!user) setUsers(users);
   };
 
   useEffect(() => {
@@ -27,7 +30,7 @@ const Users = () => {
         );
         const json = await response.json();
         setData(json);
-        SaveUsersToStorage(json)
+        SaveUsersToStorage(json);
         setLoading(false);
       } catch (error: any) {
         setError(error.message);
@@ -35,36 +38,41 @@ const Users = () => {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
-    return <Loader/>;
+    return <Loader message="Loading" />;
   }
   if (error) {
-    <div>Error: {error}</div>;
+    return (
+      <div className="center">
+        <p>Network Error: {error}</p>
+      </div>
+    );
   }
 
   return (
-      <div className="users">
-        {/**Page Name */}
-        <div className="name">
-          <h1>Users</h1>
-        </div>
-
-        {/**Cards */}
-        <Card name="Users" icon={users} id={"c1"} fig={2453} />
-        <Card name="Active Users " icon={active} id={"c2"} fig={2453} />
-        <Card name="Users With Loans" icon={loans} id={"c3"} fig={12453} />
-        <Card name="Users With Saving" icon={savings} id={"c4"} fig={102453} />
-
-        {/**Only visible on mobile */}
-        <FilterDrawer/>
-
-        {/**Data Table */}
-        <div className="table">
-        <DataTableComponent data={data}/>
-        </div>
+    <div className="users">
+      {/**Page Name */}
+      <div className="name">
+        <h1>Users</h1>
       </div>
+
+      {/**Cards */}
+      <Card name="Users" icon={users_icon} id={"c1"} fig={2453} />
+      <Card name="Active Users " icon={active} id={"c2"} fig={2453} />
+      <Card name="Users With Loans" icon={loans} id={"c3"} fig={12453} />
+      <Card name="Users With Saving" icon={savings} id={"c4"} fig={102453} />
+
+      {/**Only visible on mobile */}
+      <FilterDrawer />
+
+      {/**Data Table */}
+      <div className="table">
+        <DataTableComponent data={data} />
+      </div>
+    </div>
   );
 };
 

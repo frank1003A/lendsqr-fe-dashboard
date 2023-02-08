@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserCard component renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="card1"
+  >
+    <div
+      class="general-info"
+    >
+      <div
+        class="username-img-id"
+      >
+        <img
+          alt="user_avatar"
+          src="avatar.jpg"
+        />
+        <div
+          class="name-id"
+        >
+          <h1>
+            John Doe
+          </h1>
+          <h2>
+            1234567890
+          </h2>
+        </div>
+      </div>
+      <hr />
+      <div
+        class="tier"
+      >
+        <p>
+          User's Tier
+        </p>
+        <div
+          class="tier-star"
+        >
+          <svg
+            class="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 576 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
+            />
+          </svg>
+          <svg
+            class="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 576 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
+            />
+          </svg>
+          <svg
+            class="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 576 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"
+            />
+          </svg>
+        </div>
+      </div>
+      <hr />
+      <div
+        class="current-trans"
+      >
+        <h1
+          class="current-loan"
+        >
+          ₦1000000
+        </h1>
+        <h2
+          class="bank-details"
+        >
+          12345678901/Providus Bank
+        </h2>
+      </div>
+      <select
+        class="dropdown"
+        id=""
+        name=""
+      >
+        <option
+          value="1"
+        >
+          General Details
+        </option>
+        <option
+          value="2"
+        >
+          Documents
+        </option>
+        <option
+          value="3"
+        >
+          Bank Details
+        </option>
+        <option
+          value="4"
+        >
+          Loans
+        </option>
+        <option
+          value="5"
+        >
+          Savings
+        </option>
+        <option
+          value="6"
+        >
+          App and System
+        </option>
+      </select>
+    </div>
+    <div
+      class="section-toggle"
+    >
+      <button
+        class="btn active"
+      >
+        General Details
+      </button>
+      <button
+        class="btn"
+      >
+        Documents
+      </button>
+      <button
+        class="btn"
+      >
+        Bank Details
+      </button>
+      <button
+        class="btn"
+      >
+        Loans
+      </button>
+      <button
+        class="btn"
+      >
+        Savings
+      </button>
+      <button
+        class="btn"
+      >
+        App and System
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -10,7 +10,7 @@ interface Props {
 const FilterButton = ({ open, handleOpen, disabled }: Props) => {
   return (
     <>
-      <button className="filter-btn" disabled={disabled} onClick={handleOpen}>
+      <button className="filter-btn" data-testid="filter-btn" disabled={disabled} onClick={handleOpen}>
         <img src={filterIcon} alt="filter" />
       </button>
 

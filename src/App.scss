@@ -309,6 +309,7 @@
         justify-content: space-between;
         cursor: pointer;
         margin: 2rem 0px 0px;
+        transition: all 0.3s ease-in-out;
 
         .arrow_down {
           height: 16px;
@@ -338,6 +339,9 @@
         text-transform: capitalize;
         border-left: 5px solid transparent;
         align-items: center;
+        transition: height 0.3s ease-in-out;
+        transition-delay: 0.1s;
+
 
         &:hover {
           background: #39cdcc0f;
@@ -1016,6 +1020,15 @@
   justify-content: center;
   height: 100vh;
 
+  h1 {
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: var(--primarycolor);
+  }
+
   p {
     font-family: "Work Sans";
     font-style: normal;
@@ -1107,7 +1120,7 @@
 
 /**header user options pop up*/
 .action {
-  .menu {
+  .user-menu {
     position: absolute;
     top: 120px;
     right: 23px;
@@ -1202,7 +1215,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .action .menu {
+  .action .user-menu {
     min-width: 300px;
   }
 }
@@ -1235,7 +1248,6 @@
 
 /*popup for action-btn and action-btn-sx*/
 .table-action-menu {
-  // box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   position: absolute;
   background-color: white;
   right: 3rem;
@@ -1246,6 +1258,7 @@
   border: 1px solid rgba(84, 95, 125, 0.04);
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
+  cursor: pointer;
 
   img {
     width: 19px;
@@ -1253,7 +1266,7 @@
     margin: .8rem;
   }
 
-  a {
+  span {
     text-decoration: none;
     display: flex;
     width: 100%;
@@ -1283,12 +1296,19 @@
 .filter-btn-sx {
   display: none;
   grid-area: ft;
-  background: var(--primarycolor);
+  background: #213f7d;
   border: none;
   border-radius: 4px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   outline: none;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--mainbg);
+  text-transform: uppercase;
+  min-height: 40px;
 }
 
 /*filter button pop up*/
@@ -1477,42 +1497,54 @@ MOBILE RESPONSIVES
 
 
 // LOGIN PAGE
-@media only screen and (max-width: 700px) {
-
-  /*Big smartphones [426px -> 600px]*/
+@media only screen and (max-width: 900px) {
   .login {
     .container_1 {
       display: none;
     }
+  }
 
-    .container_2 {
-      padding: 0px;
+  .login .container_2 {
+    width: 100%;
 
-      form {
-        padding: 0px 2rem;
+    .logo_sx {
+      img {
+        height: 34px;
+        display: inline;
+        position: absolute;
+        right: 5rem;
+        top: 7rem;
       }
+    }
+
+    form {
+      margin: 7rem;
+      box-shadow: none;
     }
   }
 }
 
-// LOGIN PAGE
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 600px) {
 
   //added this in order to use the break point
   .pagination-container {
     overflow-x: scroll;
     width: 100%;
+
+    .pagination-item.selected {
+      background-color: var(--primarycolor);
+      color: var(--mainbg);
+    }
   }
 
   /*Small smartphones [325px -> 425px]*/
   .login {
-    .container_1 {
-      display: "none";
-    }
 
     .container_2 {
       width: 100%;
       justify-content: center;
+      padding: 0;
+      box-shadow: none;
 
       .logo_sx {
         img {
@@ -1527,6 +1559,7 @@ MOBILE RESPONSIVES
 
       form {
         padding: 0px 2rem;
+        margin: 0;
       }
     }
   }
@@ -1721,6 +1754,7 @@ MOBILE RESPONSIVES
         .table .data-table-footer {
           flex-direction: column;
           width: 100%;
+          margin-top: 1rem;
         }
       }
 

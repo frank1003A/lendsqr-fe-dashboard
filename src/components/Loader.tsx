@@ -1,9 +1,12 @@
 import React from "react";
 
-const Loader = () => {
+interface Props {
+  message: string;
+}
+const Loader = ({message}:Props) => {
   return (
     <div className="center">
-      <p>Loading...</p>
+      <p>{message}...</p>
       <span className="loader"></span>
     </div>
   );

@@ -12,18 +12,10 @@ interface Props {
 }
 
 const Card = (props: Props) => {
-  // remove file type information from icon string
-  const slice = (str: string): string => {
-    // index of dot
-    let dot = str.indexOf(".")
-    // slice out the index of . tothe end of string
-    let ret = str.slice(dot, str.length)
-    return ret
-  }
   return (
     <div className="card" id={props.id}>
         <span className='icon'>
-          <img src={props.icon} alt={`${slice(props.icon as string)}_icon`} />
+          <img src={props.icon} alt={`${props.icon}_icon`}/>
         </span>
         <span className='name'>{props.name}</span>
         <span className='fig'>{formatNumberWithCommas(props.fig)}</span>
