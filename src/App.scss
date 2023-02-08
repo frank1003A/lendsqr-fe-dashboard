@@ -309,7 +309,11 @@
         justify-content: space-between;
         cursor: pointer;
         margin: 2rem 0px 0px;
-        transition: all 0.3s ease-in-out;
+        transition: width 0.2s linear 0s;
+
+        &:hover {
+          background-color: #cbd5e121;
+        }
 
         .arrow_down {
           height: 16px;
@@ -339,7 +343,7 @@
         text-transform: capitalize;
         border-left: 5px solid transparent;
         align-items: center;
-        transition: height 0.3s ease-in-out;
+        transition: height 0.2s linear 0s;
         transition-delay: 0.1s;
 
 
@@ -556,7 +560,7 @@
               border: none;
               color: #213F7D;
               font-weight: 600;
-              padding: 1rem;
+              padding: 6px 0rem 5px 0rem;
               outline: none;
               cursor: pointer;
             }
@@ -902,25 +906,37 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    box-shadow: 0px 0px 1px 0px rgb(0 0 0 / 20%);
+
+    &:hover {
+      background-color: rgba(203, 213, 225, 0.1294117647);
+    }
   }
 
   .options {
     position: absolute;
-    bottom: -330%;
-    left: 1px;
-    right: 0;
+    left: 12px;
+    right: 30px;
     background-color: white;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    z-index: 9999;
+    top: 4rem;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 100;
+    border-bottom: 1px solid var(--secondarycolor);
+    display: flex;
     transition: max-height 0.3s ease-out;
+    max-width: 200px;
+    width: 250px;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    flex-direction: column;
 
     .option {
       padding: 10px;
       cursor: pointer;
 
       &:hover {
-        background-color: lightgray;
+        background-color: rgba(57, 205, 204, 0.0588235294);
       }
     }
   }
@@ -1528,8 +1544,8 @@ MOBILE RESPONSIVES
 
   //added this in order to use the break point
   .pagination-container {
-    overflow-x: scroll;
     width: 100%;
+    margin: 0px -45px;
 
     .pagination-item.selected {
       background-color: var(--primarycolor);

@@ -11,15 +11,14 @@ import useLocalStorage from "hooks/useLocalStrorage";
 import { USER } from "components/types/user";
 
 const Users = () => {
-  let offlineData = JSON.parse(localStorage.getItem("all_users") as string);
-  const [data, setData] = useState<any>(offlineData);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   // localstorage hook to store all user detail
   const [user, setUsers] = useLocalStorage<USER[]>("all_users", []);
+  const [data, setData] = useState<any>(user);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const SaveUsersToStorage = (users: USER[]) => {
-    if (!user) setUsers(users);
+    setUsers(users);
   };
 
   useEffect(() => {

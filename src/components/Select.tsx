@@ -17,9 +17,9 @@ const CustomSelect = ({ options }: Props) => {
         <img src={ad} alt="arrow_icon" id="arrow_down"/>
       </div>
       {open && (
-        <ul className="options">
+        <div className="options">
           {options.map(option => (
-            <li
+            <span
               key={option}
               className="option"
               onClick={() => {
@@ -28,9 +28,9 @@ const CustomSelect = ({ options }: Props) => {
               }}
             >
               {option}
-            </li>
+            </span>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

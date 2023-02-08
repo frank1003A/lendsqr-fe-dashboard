@@ -8,6 +8,7 @@ interface Props {
 }
 
 const FilterButton = ({ open, handleOpen, disabled }: Props) => {
+
   return (
     <>
       <button className="filter-btn" data-testid="filter-btn" disabled={disabled} onClick={handleOpen}>
