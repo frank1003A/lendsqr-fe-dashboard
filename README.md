@@ -16,7 +16,7 @@ Utilized cust hooks to Improve Perfomance e.g using the useMemo hook to handle t
 
 ## Screenshots
 
-![App Screenshot](https://files.fm/f/mv6uf7292)
+![App Screenshot](assets/demo/frank-chinonso-ezene-lendsqr-fe-test-delta.vercel.app_users.png)
 
 
 ## Appendix
